@@ -1,0 +1,65 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+<center>
+    <main class="layout">
+        <center>
+            <form class="header__search" style="width:500px;padding-bottom: 20px;" action="/" method="get">
+                <label>
+                    <svg height="32" version="1.1" viewbox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg">
+                        <title>
+                            search
+                        </title>
+                        <path d="M32 30.586l-10.845-10.845c1.771-2.092 2.845-4.791 2.845-7.741 0-6.617-5.383-12-12-12s-12 5.383-12 12c0 6.617 5.383 12 12 12 2.949 0 5.649-1.074 7.741-2.845l10.845 10.845 1.414-1.414zM12 22c-5.514 0-10-4.486-10-10s4.486-10 10-10c5.514 0 10 4.486 10 10s-4.486 10-10 10z">
+                        </path>
+                    </svg>
+                    <input placeholder="Search for rooms..." name="SearchQuery" value="{{request.GET.SearchQuery}}" />
+                </label>
+            </form>
+        </center>
+        <!-- <div class="container"> -->
+            <!-- Room List Start -->
+            {% for user in main_user %}
+            <div class="roomList">
+                <div class="mobile-menu">
+                    <form class="header__search">
+                        <label>
+                            <svg height="32" version="1.1" viewbox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg">
+                                <title>
+                                    search
+                                </title>
+                                <path d="M32 30.586l-10.845-10.845c1.771-2.092 2.845-4.791 2.845-7.741 0-6.617-5.383-12-12-12s-12 5.383-12 12c0 6.617 5.383 12 12 12 2.949 0 5.649-1.074 7.741-2.845l10.845 10.845 1.414-1.414zM12 22c-5.514 0-10-4.486-10-10s4.486-10 10-10c5.514 0 10 4.486 10 10s-4.486 10-10 10z">
+                                </path>
+                            </svg>
+                            <input placeholder="Search for posts"/>
+                        </label>
+                    </form>
+                </div>
+                <div class="roomListRoom" style="width:500px">
+                    <center>
+                      <div class="roomListRoom__header" style="padding-left: 175px;">
+                        <a class="roomListRoom__author">
+                            <div class="avatar">
+                                <img src="{{user.avatar_url}}" style="width:100px;height: 100px;"/>
+                            </div>
+                        </a>
+                    </div>
+                    </center>
+                    <div class="roomListRoom__content">
+                        <a>
+                            {{user.name}}
+                        </a>
+                        <p class="roomListRoom__topic" style="width:150px">{{user.followers}} Followers</p><br>
+                        <p class="roomListRoom__topic" style="width:150px">{{user.following}} Following</p>
+                        <p>
+                            {{user.bio}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- Room List End -->
+        <!-- </div> -->
+    </main>
+</center>
+{% endblock %}
